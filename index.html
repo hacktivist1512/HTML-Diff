@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Epon</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="htmldiff.js"></script>
+    <style>
+    ins {
+        text-decoration: none;
+        background-color: #d4fcbc;
+}
+
+    del {
+        text-decoration: line-through;
+        background-color: #fbb6c2;
+        color: #555;
+}
+    </style>
+</head>
+<body>
+    <div class="oldtext">
+        <textarea rows="20" placeholder="Old Text" id="text1" onchange="compare()" onkeypress="compare()"></textarea>
+    </div>
+    <div class="newtext">
+        <textarea rows="20" placeholder="New Text" id="text2" onchange="compare()" onkeypress="compare()"></textarea>
+    </div>
+    <input type="checkbox" id="reflect" onchange="togglebox()" checked>Show changes
+    <div id="output">
+    </div>
+    <script>
+        function compare(){
+            var text1 = document.getElementById("text1").value;
+            var text2 = document.getElementById("text2").value;
+            var output = htmldiff(text1, text2);
+            document.getElementById("output").innerHTML = output;
+        }
+        function togglebox() {
+            if(document.getElementById("reflect").checked === true){
+                document.getElementById("output").style.display = "block";
+        }
+            else{
+                document.getElementById("output").style.display = "none";
+        }
+        }
+
+    </script>
+</body>
+</html>
